@@ -30,7 +30,7 @@ function showNotes () {
     let html = ""
 
     notesObj.forEach((elem, index) => {
-        html = html + `<div class="card m-2" style="width: 18rem;">
+        html = html + `<div class="noteCard card m-2" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${index + 1}</h5>
           <p class="card-text">${elem}</p>
@@ -61,3 +61,20 @@ function deleteNote (index) {
     localStorage.setItem("notes", JSON.stringify(notesObj))
     showNotes();
 }
+
+let search = document.getElementById("searchTxt");
+
+search.addEventListener("input", ()=>{
+    let inputVal = search.value.toLowerCase();
+    let noteCards = document.getElementsByClassName("noteCard");
+    
+    Array.from(noteCards).forEach((elem)=>{
+        let cardTxt = elem.getElementsByTagName("p")[0].innerText;
+
+        if(cardTxt.includes(inputVal)){
+            elem.style.display = 'block';
+        }else{
+            elem.style.display = "none";
+        }
+    })
+})
