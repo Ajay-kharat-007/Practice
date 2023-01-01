@@ -1,4 +1,4 @@
 # Practice
 For Practice the code 
 
-Hey we are prcticing the git 
+We Are Creating Notes App
